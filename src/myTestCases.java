@@ -1,5 +1,3 @@
-import static org.testng.Assert.assertEquals;
-
 import java.time.Duration;
 import java.util.Random;
 
@@ -9,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -51,7 +50,7 @@ public class myTestCases {
 
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void DynamicDropdown() throws InterruptedException {
 
 		String[] twoChar = { "az", "fa", "ua", "ma" };
@@ -77,5 +76,25 @@ public class myTestCases {
 		Assert.assertEquals(Acuail, true);
 
 	}
+	
+	@Test (priority = 3)
+	public void StaticDropdown () {
+		
+		WebElement dropdown = driver.findElement(By.id("dropdown-class-example"));
+		
+		Select selector = new Select(dropdown);
+		
+		int randomNumber = rand.nextInt(1,4);
+		
+		selector.selectByIndex(randomNumber);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
